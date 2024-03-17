@@ -10,7 +10,7 @@ import { View } from "@react-three/drei";
 import { sizes } from "../constants";
 
 const Model = () => {
-  const [size, setsize] = useState("small");
+  const [size, setSize] = useState("small");
   const [model, setModel] = useState({
     title: "iPhone 17 Pro in Natural Titanium",
     color: ["#8F8A81", "FFE7B9", "#fF6C64"],
