@@ -8,11 +8,13 @@ import { Canvas } from "@react-three/fiber";
 import { models } from "../constants";
 import { View } from "@react-three/drei";
 import { sizes } from "../constants";
+import { useEffect } from "react";
+import { animateWithGsapTimeline } from "../utils/animation";
 
 const Model = () => {
   const [size, setSize] = useState("small");
   const [model, setModel] = useState({
-    title: "iPhone 17 Pro in Natural Titanium",
+    title: "iPhone 15 Pro in Natural Titanium",
     color: ["#8F8A81", "FFE7B9", "#fF6C64"],
     img: yellowImg,
   });
@@ -30,6 +32,24 @@ const Model = () => {
   const [smallRotaion, setsmallRotaion] = useState(0);
   const [largeRotaion, setLargeRotaion] = useState(0);
 
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    if (size === "large") {
+      animateWithGsapTimeline(tl, small, smallRotaion, "#view1", "#view2", {
+        transform: "translateX(-100%)",
+        duration: 2,
+      });
+    }
+
+    if (size === "small") {
+      animateWithGsapTimeline(tl, large, largeRotaion, "#view2", "#view1", {
+        transform: "translateX(0)",
+        duration: 2,
+      });
+    }
+  }, [size]);
+
   useGSAP(() => {
     gsap.to("#heading", { y: 0, opacity: 1 });
   }, []);
@@ -37,7 +57,7 @@ const Model = () => {
     <section className="common-padding">
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading">
-          Take a Closer Look...
+          Take a 3D look...
         </h1>
         <div className="flex flex-col items-center mt-5">
           <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
