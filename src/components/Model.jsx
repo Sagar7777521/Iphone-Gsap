@@ -9,7 +9,7 @@ import { models } from "../constants";
 import { View } from "@react-three/drei";
 import { sizes } from "../constants";
 import { useEffect } from "react";
-import { animateWithGsapTimeline } from "../utils/animation";
+import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
   const [size, setSize] = useState("small");
